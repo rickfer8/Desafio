@@ -51,10 +51,10 @@ public class UsuarioEndPoint {
 		return ResponseEntity.ok(uDTO);
 	}
 	
-	@ApiOperation(value = "Consultar um usuário pelo ID" , nickname = "consultarUsuario", response = UsuarioDTO.class)
-	@GetMapping("/{id}")
-	public ResponseEntity<UsuarioDTO> consultarPorId(@RequestBody String chavePublica, @PathVariable(name = "id") Long id){	
-		UsuarioDTO usuarioDTO = usuarioService.consultarUsuarioPorId(id, chavePublica);
+	@ApiOperation(value = "Consultar um usuário pelo Chave Publica" , nickname = "consultarUsuario", response = UsuarioDTO.class)
+	@GetMapping("/")
+	public ResponseEntity<UsuarioDTO> consultarPorId(@RequestBody String chavePublica){	
+		UsuarioDTO usuarioDTO = usuarioService.consultarUsuarioPorChave(chavePublica);
 		return ResponseEntity.ok(usuarioDTO);		
 	}
 	

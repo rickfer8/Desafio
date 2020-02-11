@@ -5,8 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import java.security.InvalidKeyException;
 import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,17 +62,6 @@ public class UsuarioServiceTest {
 		return usuario;
 	}
 	
-	private KeyPair mockKeyPairVazio() {
-		PublicKey chavePublica = null;
-		PrivateKey chavePrivada = null;
-		KeyPair keyPar = new KeyPair(chavePublica, chavePrivada);
-		return keyPar;
-	}
-	
-	private KeyPair mockKeyPair() throws NoSuchAlgorithmException {		
-		return SecurityConfigRSA.getParChave();
-	}
-	
 	private Optional<Usuario>  mockUsuarioOptional() {
 		Optional<Usuario> optional = Optional.of(mockUsuarioSalvo());
 		return optional;
@@ -90,13 +77,6 @@ public class UsuarioServiceTest {
 		chaveUsuarioDTO.setChavePublica(chaveCriptografada);
 		chavePublica = chaveCriptografada;
 		mapChave.put(chaveUsuarioDTO, parChave);
-	}
-	
-	private ChaveUsuarioDTO mockChaveUsuarioDTO() {
-		ChaveUsuarioDTO chaveUsuarioDTO = new ChaveUsuarioDTO();
-		chaveUsuarioDTO.setId(1l);
-		chaveUsuarioDTO.setChavePublica("");
-		return chaveUsuarioDTO;
 	}
 	
 	@Before
@@ -122,7 +102,7 @@ public class UsuarioServiceTest {
 	public void atualizarTest() throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException {
 		Usuario usuario = mockUsuarioSalvo();		
 		mockChave();
-		usuarioService.getMapchave().putAll(mapChave);
+		UsuarioService.getMapchave().putAll(mapChave);
 		Mockito.when( dao.save(usuario)).thenReturn(mockUsuarioSalvo());
 		assertNotNull(usuarioService.atualiza(usuario));
 	}
@@ -131,7 +111,7 @@ public class UsuarioServiceTest {
 	
 	@Test
 	public void recuperarChavePorUsuarioTest() throws NoSuchAlgorithmException{
-		usuarioService.getMapchave().putAll(mapChave);
+		UsuarioService.getMapchave().putAll(mapChave);
 		assertNotNull(usuarioService.recuperarChavePorUsuario(1l));
 	}
 	

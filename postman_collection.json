@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n   \"nome\": \"Ricardo Ribeiro\",\r\n   \"email\": \"ricardo.feribo@gmail.com\"\r\n }",
+					"raw": " {\r\n   \"nome\": \"Ricardo Ribeiro\",\r\n   \"email\": \"ricardo.ferib@gmail.com\"\r\n }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -38,6 +38,43 @@
 					]
 				},
 				"description": "Serviço para salvar um usuário"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/usuarios/1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n   \"nome\": \"Elio de Sena\",\r\n   \"email\": \"elio.sena@gmail.com\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuarios/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuarios",
+						"1"
+					]
+				},
+				"description": "Serviço para atualizar um usuario."
 			},
 			"response": []
 		},
@@ -65,18 +102,38 @@
 		},
 		{
 			"name": "http://localhost:8080/usuarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "Aab4p5xa7NoKDPVzOC9RI0NV7BK+SdYnZUuqzKU4HVbHRVbln3YNIaowtDvOyME0+CLxOLu3Vv8FjbmEdqS5N/09+zYghCQGSciBukCAIxwJrW5DoncZczd1H6qwCRDyFthZaTujaLx/1JDo+keNmqvClgZ+HFMk6WruhHYaWuIQBLYvKSpy3LPrv7yMUGiMUZA/Qi3cB+TvjneJ16MI8c0opgMjSQnRY0z97egoQCc0XsiE9HZeEubAfcTRNORUxCNiABmuNe7x4Z2aTUbGxhMEzRsRmxTSOg9Nid2hOufR6AxvgJZPMB0FHC6MtFglFjOpQQMSQf/qsj7R3OW49Q==",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:8080/usuarios",
+					"raw": "http://localhost:8080/usuarios/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"usuarios"
+						"usuarios",
+						""
 					]
 				},
 				"description": "Lista todos os usuários cadastrados."
